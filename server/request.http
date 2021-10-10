@@ -1,0 +1,116 @@
+POST  http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"1",
+    "name":"Vo Duc An"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"1"
+}
+
+###
+
+POST http://localhost:5000/api/years
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM5N2E3M2U5NjZlNDk0Zjk0NjY5ODAiLCJpYXQiOjE2MzExNTcyNjR9.dEYXpNDEPwhP-i9LbKSO_ohKGyR55z5aQ8NSoJuXcQY
+
+{
+    "name":"2025 -  2026"
+}
+
+###
+
+GET http://localhost:5000/api/years
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMDA4MTF9.LE04Uj6Uj6f_AOGQD7SBw5G7lr0FocJuwzdPgqhDkuY
+
+###
+
+PUT http://localhost:5000/api/years/6136dfc32a9b724be19b79c1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMDA4MTF9.LE04Uj6Uj6f_AOGQD7SBw5G7lr0FocJuwzdPgqhDkuY
+
+{
+    "name":"2021 - 2022",
+    "isActive":"true"
+}
+
+###
+
+GET http://localhost:5000/api/lops
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+###
+
+POST http://localhost:5000/api/grades
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+{
+    "name":"Khối 12"
+}
+
+###
+
+GET http://localhost:5000/api/grades
+Authorization: :Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+###
+
+
+DELETE http://localhost:5000/api/lops/613cdbb955843acd66739db4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+###
+
+
+POST http://localhost:5000/api/lops
+Content-Type: application/json
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+{
+    "name":"10A1",
+    "grade":"613769d4cb241938d603e5fc",
+    "year":"6136dfc32a9b724be19b79c1"
+}
+
+###
+
+
+PUT http://localhost:5000/api/lops/6137812cfa4cb14ebdd66f49
+Content-Type: application/json
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+{
+    "name":"10A1"
+}
+
+###
+
+
+POST http://localhost:5000/api/subjects
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+
+{
+    "name":"Tin học"
+}
+
+###
+
+
+PUT  http://localhost:5000/api/lockclass/61619ec25d062f7a3ba85ebe
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTNiOTJjYjQzNjc2MDM0YjJjZDE3YjQiLCJpYXQiOjE2MzM3OTkxMjh9.pz12yai0FI_DGqHj28QSGNWQovYgmMBdmB6PGdjcnsA
+
+{
+    "selected":"true"
+}
