@@ -60,7 +60,7 @@ const Dashboard = () => {
   }, []);
   useEffect(() => {
     getDashboards(_id);
-  }, [dashboards]);
+  }, []);
   let body = null;
   const [lockLop, setLockLop] = useState(false);
   const [newGrade, setNewGrade] = useState({

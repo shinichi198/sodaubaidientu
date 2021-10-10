@@ -1,5 +1,7 @@
 export const apiUrl =
-  process.env.NODE_ENV !== "production" ? "http://localhost:5000/api" : "kkk";
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:5000/api"
+    : "https://floating-taiga-86865.herokuapp.com/api";
 export const LOCAL_STORAGE_TOKEN_NAME = "shinichi";
 export const CLASS_LOADED_FAIL = "CLASS_LOADED_FAIL";
 export const CLASS_LOADED_SUCCESS = "CLASS_LOADED_SUCCESS";
