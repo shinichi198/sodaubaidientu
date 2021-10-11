@@ -99,17 +99,17 @@ router.get("/:id", verifyToken, async (req, res) => {
     console.log(err);
   }
 });
-//@route GET api/locks
-//@desc get LockClass
-//@access Private
-// router.get("/", verifyToken, async (req, res) => {
-//   try {
-//     const locks = await LockClass.find();
-//     res.json({ success: true, lockclass: locks });
-//   } catch (err) {
-//     res.status(500).json({ success: false, message: "Lỗi máy chủ" });
-//   }
-// });
+// @route GET api/locks
+// @desc get LockClass
+// @access Private
+router.get("/", verifyToken, async (req, res) => {
+  try {
+    const locks = await LockClass.find();
+    res.json({ success: true, lockclass: locks });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Lỗi máy chủ" });
+  }
+});
 
 router.delete("/:id", verifyToken, async (req, res) => {
   try {

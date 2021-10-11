@@ -118,15 +118,7 @@ router.post("/", verifyToken, async (req, res) => {
     week,
     user,
   } = req.body;
-  const check = await Toprecoder.findOne({ week, tiet, lophoc, cahoc, thu });
-  if (check) {
-    const _id = check.user;
-    const users = await User.findOne({ _id });
-    return res.json({
-      success: true,
-      message: `Tiết học này đã có giáo viên ${users.name} ký rồi`,
-    });
-  }
+
   try {
     const newRecoder = new Toprecoder({
       thu,
@@ -144,14 +136,31 @@ router.post("/", verifyToken, async (req, res) => {
       lophoc,
       week,
     });
+    const check = await Toprecoder.findOne({
+      week: newRecoder.week,
+      tiet: newRecoder.tiet,
+      lophoc: newRecoder.lophoc,
+      cahoc: newRecoder.cahoc,
+      thu: newRecoder.thu,
+    });
+    if (check) {
+      const _id = check.user;
+      const users = await User.findOne({ _id });
+      if (users)
+        return res.json({
+          success: false,
+          message: `Tiết học này đã có giáo viên ${users.name} ký rồi`,
+        });
+    }
     await newRecoder.save();
+    //console.log(newRecoder._id);
     const data = await Toprecoder.aggregate([
       {
         $facet: {
           totalData: [
             {
               $match: {
-                _id: newRecoder._id,
+                user: mongoose.Types.ObjectId(newRecoder.user),
               },
             },
             //User
@@ -194,19 +203,20 @@ router.post("/", verifyToken, async (req, res) => {
             },
             { $unwind: "$subject" },
             //Sorting
-            { $sort: { thu: 1 } },
+            { $sort: { createdAt: -1 } },
           ],
         },
       },
     ]);
     const recoder = data[0].totalData;
+    //console.log(recoder);
     res.json({
       success: true,
       message: "Thêm mới tiết dạy thành công!",
       dashboard: recoder,
     });
   } catch (err) {
-    res.status(500).json({ success: false, message: "Lỗi máy chủ" });
+    return res.status(500).json({ success: false, message: "Lỗi máy chủ" });
   }
 });
 

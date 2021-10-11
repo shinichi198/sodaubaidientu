@@ -1,17 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-// import { ClassContext } from "../contexts/ClassContext";
 import { GradeContext } from "../contexts/GradeContext";
 import { WeekContext } from "../contexts/WeekContext";
 import Spinner from "react-bootstrap/Spinner";
 import { AuthContext } from "../contexts/AuthContext";
-// import Card from "react-bootstrap/Card";
-// import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import SingleClass from "../components/classs/SingleClass";
-// import addIcon from "../assets/plus-circle-fill.svg";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-// import Tooltip from "react-bootstrap/Tooltip";
+
 import Toast from "react-bootstrap/Toast";
 import NotFound from "../components/layout/NotFound";
 import Form from "react-bootstrap/Form";
@@ -23,11 +16,6 @@ const Lockclass = () => {
       user: { role },
     },
   } = useContext(AuthContext);
-
-  // const {
-  //   classState: { classs, classLoading },
-  //   getClasss,
-  // } = useContext(ClassContext);
   const {
     gradeState: { grades },
     getGrade,
@@ -160,7 +148,7 @@ const Lockclass = () => {
       });
     }
   };
-  if (role !== "admin") return <NotFound />;
+  if (role !== "admin" && role !== "superadmin") return <NotFound />;
   return (
     <div>
       <Row className="row-cols-1 row-cols-md-2 g-4 mx-auto mt-3">
@@ -188,9 +176,6 @@ const Lockclass = () => {
                 </option>
               ))}
             </Form.Control>
-            {/* <Form.Control as="button" className="btn btn-success">
-              Tìm kiếm
-            </Form.Control> */}
             <Form.Control as="button" className="btn btn-success">
               Lưu
             </Form.Control>

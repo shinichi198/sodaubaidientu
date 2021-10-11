@@ -4,28 +4,20 @@ import { GradeContext } from "../contexts/GradeContext";
 import { WeekContext } from "../contexts/WeekContext";
 import Spinner from "react-bootstrap/Spinner";
 import { AuthContext } from "../contexts/AuthContext";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import SingleClass from "../components/classs/SingleClass";
-import addIcon from "../assets/plus-circle-fill.svg";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import Toast from "react-bootstrap/Toast";
 import NotFound from "../components/layout/NotFound";
 import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
 import { LockclassContext } from "../contexts/LockclassContext";
 const Addlockclass = () => {
   const {
     authState: {
-      user: { username, role },
+      user: { role },
     },
   } = useContext(AuthContext);
 
   const {
-    classState: { classs, classLoading },
+    classState: { classs },
     getClasss,
   } = useContext(ClassContext);
   const {
@@ -39,7 +31,6 @@ const Addlockclass = () => {
   const {
     lockclassState: { lockclasss, lockclassLoading },
     getLockClass,
-    addLockClass,
     setShowToast,
     addListLockClass,
     showToast: { show, message, type },
@@ -93,7 +84,7 @@ const Addlockclass = () => {
       </div>
     );
   }
-  const { week, khoi } = newGrade;
+  const { khoi } = newGrade;
   const onChangeForm = (event) => {
     setNewGrade({ ...newGrade, [event.target.name]: event.target.value });
   };
@@ -109,6 +100,7 @@ const Addlockclass = () => {
       });
     }
   };
+  if (role !== "superadmin") return <NotFound />;
   return (
     <div style={{ paddingLeft: "40%" }}>
       <Row className="row-cols-1 row-cols-md-3 g-4 mx-auto mt-3">

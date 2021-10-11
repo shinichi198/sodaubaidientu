@@ -25,7 +25,7 @@ export const dashboardReducer = (state, action) => {
     case ADD_DASHBOARD:
       return {
         ...state,
-        dashboards: [...state.dashboards, payload],
+        dashboards: payload,
       };
     case DELETE_DASHBOARD:
       return {

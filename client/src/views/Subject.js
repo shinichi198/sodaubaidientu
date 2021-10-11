@@ -77,7 +77,7 @@ const Subject = () => {
       </>
     );
   }
-  if (role !== "admin") return <NotFound />;
+  if (role !== "superadmin") return <NotFound />;
   return (
     <div>
       {body}

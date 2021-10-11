@@ -23,9 +23,22 @@ const LockclassContextProvider = ({ children }) => {
     type: null,
   });
 
-  const getLockClass = async (id) => {
+  const getLockClass = async (idLock) => {
     try {
-      const res = await axios.get(`${apiUrl}/lockclass/${id}`);
+      const res = await axios.get(`${apiUrl}/lockclass/${idLock}`);
+      if (res.data.success) {
+        dispatch({
+          type: LOCKCLASS_LOADED_SUCCESS,
+          payload: res.data.lockclass,
+        });
+      }
+    } catch (err) {
+      dispatch({ type: LOCKCLASS_LOADED_FAIL });
+    }
+  };
+  const getAllLockClass = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/lockclass`);
       if (res.data.success) {
         dispatch({
           type: LOCKCLASS_LOADED_SUCCESS,
@@ -102,6 +115,7 @@ const LockclassContextProvider = ({ children }) => {
     lockclassState,
     addListLockClass,
     updateLockclass,
+    getAllLockClass,
   };
 
   return (

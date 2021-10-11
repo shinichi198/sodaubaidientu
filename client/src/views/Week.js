@@ -84,7 +84,7 @@ const Week = () => {
       </>
     );
   }
-  if (role !== "admin") return <NotFound />;
+  if (role !== "superadmin") return <NotFound />;
   return (
     <div>
       {body}

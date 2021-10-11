@@ -9,7 +9,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 const NavbarMenu = () => {
   const {
     authState: {
-      user: { username, role },
+      user: { name, role },
     },
     logoutUser,
   } = useContext(AuthContext);
@@ -31,43 +31,49 @@ const NavbarMenu = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          {
+          {role === "superadmin" && (
+            <>
+              <Nav.Link
+                className="font-weight-bolder text-white"
+                to="/class"
+                as={Link}
+              >
+                Lớp học
+              </Nav.Link>
+
+              <Nav.Link
+                className="font-weight-bolder text-white"
+                to="/subject"
+                as={Link}
+              >
+                Môn học
+              </Nav.Link>
+              <Nav.Link
+                className="font-weight-bolder text-white"
+                to="/addlockclass"
+                as={Link}
+              >
+                Cập nhật lớp để khóa
+              </Nav.Link>
+              <Nav.Link
+                className="font-weight-bolder text-white"
+                to="/week"
+                as={Link}
+              >
+                Tuần
+              </Nav.Link>
+            </>
+          )}
+          {(role === "admin" || role === "superadmin") && (
             <Nav.Link
               className="font-weight-bolder text-white"
-              to="/class"
+              to="/lockclass"
               as={Link}
             >
-              Lớp học
+              Khóa sổ đầu bài
             </Nav.Link>
-          }
-          <Nav.Link
-            className="font-weight-bolder text-white"
-            to="/subject"
-            as={Link}
-          >
-            Môn học
-          </Nav.Link>
-          <Nav.Link
-            className="font-weight-bolder text-white"
-            to="/addlockclass"
-            as={Link}
-          >
-            Cập nhật lớp để khóa
-          </Nav.Link>
-          <Nav.Link
-            className="font-weight-bolder text-white"
-            to="/week"
-            as={Link}
-          >
-            Tuần
-          </Nav.Link>
-          <Nav.Link
-            className="font-weight-bolder text-white"
-            to="/lockclass"
-            as={Link}
-          >
-            Khóa sổ đầu bài
-          </Nav.Link>
+          )}
+
           <Nav.Link
             className="font-weight-bolder text-white"
             to="/dashboard"
@@ -85,7 +91,7 @@ const NavbarMenu = () => {
         </Nav>
         <Nav>
           <Nav.Link className="font-weight-bolder text-white" disabled>
-            Welcome {username}
+            Welcome {name}
           </Nav.Link>
           <Button
             variant="secondary"

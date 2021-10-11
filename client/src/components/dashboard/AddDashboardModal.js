@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useEffect } from "react";
 import { SubjectContext } from "../../contexts/SubjectContext";
 import { GradeContext } from "../../contexts/GradeContext";
 import { DashboardContext } from "../../contexts/DashboardContext";
@@ -123,6 +123,10 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
       nhanxet: "",
       xeploai: "",
       hocsinh: "",
+      grade: khoi,
+      lophoc: lophoc,
+      week: week,
+      user: _id,
     });
     setShowAddDashboardModal(false);
   };
@@ -138,32 +142,15 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
             <Form.Control
               type="date"
               name="ngay"
+              required
               onChange={onChangeNewDashboardForm}
             />
           </Form.Group>
-          {/* <Form.Group>
-            <Form.Control
-              as="select"
-              custom
-              onChange={onChangeNewDashboardForm}
-              name="thu"
-            >
-              <option value="">Chọn Thứ</option>
-              {thus.map((khoi) => (
-                <option
-                  key={khoi.day_code}
-                  value={khoi.day_code}
-                  selected={dayCode}
-                >
-                  {khoi.day_name}
-                </option>
-              ))}
-            </Form.Control>
-          </Form.Group> */}
           <Form.Group>
             <Form.Control
               as="select"
               name="cahoc"
+              required
               onChange={onChangeNewDashboardForm}
             >
               <option value="">Chọn ca học</option>
@@ -177,6 +164,7 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
               as="select"
               name="tiet"
               onChange={onChangeNewDashboardForm}
+              required
             >
               <option value="">Chọn tiết theo TKB</option>
               <option value="1">Tiết 1</option>
@@ -192,6 +180,7 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
               custom
               onChange={onChangeNewDashboardForm}
               name="subject"
+              required
             >
               <option value="">Chọn Môn học</option>
               {subjects.map((khoi) => (

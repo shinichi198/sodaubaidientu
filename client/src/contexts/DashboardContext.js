@@ -45,6 +45,8 @@ const DashboardContextProvider = ({ children }) => {
       if (res.data.success) {
         dispatch({ type: ADD_DASHBOARD, payload: res.data.dashboard });
         return res.data;
+      } else {
+        return res.data;
       }
     } catch (err) {
       // return err.res.data

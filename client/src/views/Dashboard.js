@@ -48,7 +48,7 @@ const Dashboard = () => {
 
   const {
     lockclassState: { lockclasss },
-    getLockClass,
+    getAllLockClass,
   } = useContext(LockclassContext);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Dashboard = () => {
     getClasss();
     getGrade();
     getDashboards(_id);
-    getLockClass();
+    getAllLockClass();
   }, []);
   useEffect(() => {
     getDashboards(_id);
@@ -76,12 +76,13 @@ const Dashboard = () => {
     });
     //console.log(node);
     setNewData(node);
+    console.log(lockclasss);
     const node2 = lockclasss.filter((db) => {
       return db.week === newGrade.week && db.lophoc === newGrade.lophoc;
     });
     //console.log(node2);
     if (node2.length > 0) setLockLop(node2[0].selected);
-  }, [newGrade]);
+  }, [newGrade.lophoc, dashboards]);
 
   useEffect(() => {
     const tmp = classs.filter((lop) => {
