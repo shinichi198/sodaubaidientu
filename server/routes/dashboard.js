@@ -4,7 +4,6 @@ const Toprecoder = require("../models/Toprecoder");
 const verifyToken = require("../middleware/auth");
 const mongoose = require("mongoose");
 const User = require("../models/User");
-const LockClass = require("../models/LockClass");
 //@route GET api/dashboards
 //@desc Get toprecoder
 //@access Private
@@ -136,6 +135,7 @@ router.post("/", verifyToken, async (req, res) => {
       lophoc,
       week,
     });
+    //console.log(newRecoder);
     const check = await Toprecoder.findOne({
       week: newRecoder.week,
       tiet: newRecoder.tiet,
