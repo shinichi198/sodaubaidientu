@@ -1,5 +1,6 @@
 import {
   ADD_DASHBOARD,
+  ADD_THAM_SO,
   DASHBOARD_LOADED_FAIL,
   DASHBOARD_LOADED_SUCCESS,
   DELETE_DASHBOARD,
@@ -10,6 +11,13 @@ import {
 export const dashboardReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
+    case ADD_THAM_SO:
+      return {
+        ...state,
+        week: payload.week,
+        khoi: payload.khoi,
+        lophoc: payload.lophoc,
+      };
     case DASHBOARD_LOADED_SUCCESS:
       return {
         ...state,

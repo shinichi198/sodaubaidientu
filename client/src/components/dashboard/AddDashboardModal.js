@@ -1,18 +1,27 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { SubjectContext } from "../../contexts/SubjectContext";
 import { GradeContext } from "../../contexts/GradeContext";
 import { DashboardContext } from "../../contexts/DashboardContext";
 import { AuthContext } from "../../contexts/AuthContext";
-const AddDashboardModal = ({ week, khoi, lophoc }) => {
+const AddDashboardModal = () => {
   const {
+    dashboardState: { khoi, week, lophoc },
     setShowAddDashboardModal,
     showAddDashboardModal,
     addToprecoder,
     setShowToast,
   } = useContext(DashboardContext);
+  const [newGrade, setNewGrade] = useState({
+    khoi: khoi,
+    lophoc: lophoc,
+    week: week,
+  });
+  useEffect(() => {
+    setNewGrade({ khoi: khoi, lophoc: lophoc, week: week });
+  }, [lophoc, khoi, week]);
   const rows = [];
   for (var i = 1; i < 250; i++) {
     rows.push(i);
@@ -76,11 +85,20 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
     nhanxet: "",
     xeploai: "",
     hocsinh: "",
-    grade: khoi,
-    lophoc: lophoc,
-    week: week,
+    grade: newGrade.khoi,
+    lophoc: newGrade.lophoc,
+    week: newGrade.week,
     user: _id,
   });
+  useEffect(() => {
+    setNewDashboard({
+      ...newDashboard,
+      grade: newGrade.khoi,
+      lophoc: newGrade.lophoc,
+      week: newGrade.week,
+    });
+  }, [lophoc, week, khoi, showAddDashboardModal]);
+  // console.log(newDashboard);
   useEffect(() => {
     getGrade();
     getSubject();
@@ -110,7 +128,7 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
       type: success ? "success" : "danger",
     });
   };
-
+  //console.log("Tuan:", week, " ", khoi, " ", lophoc);
   const resetAddDashboardData = () => {
     setNewDashboard({
       thu: "",
@@ -123,9 +141,9 @@ const AddDashboardModal = ({ week, khoi, lophoc }) => {
       nhanxet: "",
       xeploai: "",
       hocsinh: "",
-      grade: khoi,
-      lophoc: lophoc,
-      week: week,
+      grade: "",
+      lophoc: "",
+      week: "",
       user: _id,
     });
     setShowAddDashboardModal(false);

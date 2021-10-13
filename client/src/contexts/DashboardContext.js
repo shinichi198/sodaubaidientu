@@ -2,6 +2,7 @@ import { createContext, useReducer, useState } from "react";
 import { dashboardReducer } from "../reducers/dashboardReducer";
 import {
   ADD_DASHBOARD,
+  ADD_THAM_SO,
   apiUrl,
   DASHBOARD_LOADED_FAIL,
   DASHBOARD_LOADED_SUCCESS,
@@ -15,6 +16,9 @@ const DashboardContextProvider = ({ children }) => {
     dashboard: null,
     dashboards: [],
     dashboardLoading: true,
+    week: "",
+    khoi: "",
+    lophoc: "",
   });
   const [showAddDashboardModal, setShowAddDashboardModal] = useState(false);
   const [showUpdateDashboardModal, setShowUpdateDashboardModal] =
@@ -24,7 +28,10 @@ const DashboardContextProvider = ({ children }) => {
     message: "",
     type: null,
   });
-
+  const addThamso = (newThamso) => {
+    //console.log(newThamso.lophoc);
+    dispatch({ type: ADD_THAM_SO, payload: newThamso });
+  };
   const getDashboards = async (id) => {
     try {
       const res = await axios.get(`${apiUrl}/dashboards/${id}`);
@@ -78,6 +85,7 @@ const DashboardContextProvider = ({ children }) => {
     showToast,
     getDashboards,
     deleteDashboard,
+    addThamso,
   };
   return (
     <DashboardContext.Provider value={dashboardContextData}>

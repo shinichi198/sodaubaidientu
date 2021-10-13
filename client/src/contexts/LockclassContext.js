@@ -62,7 +62,7 @@ const LockclassContextProvider = ({ children }) => {
   };
 
   const addLockClass = async (newLockClass) => {
-    console.log(newLockClass);
+    // console.log(newLockClass);
     try {
       const res = await axios.post(`${apiUrl}/lockclass`, newLockClass);
       if (res.data.success) {

@@ -43,6 +43,7 @@ const Dashboard = () => {
     getDashboards,
     setShowAddDashboardModal,
     setShowToast,
+    addThamso,
     showToast: { show, message, type },
   } = useContext(DashboardContext);
 
@@ -70,19 +71,17 @@ const Dashboard = () => {
   });
   const [newData, setNewData] = useState(null);
   const [newClass, setNewClass] = useState(null);
+
   useEffect(() => {
     const node = dashboards.filter((db) => {
       return db.week === newGrade.week && db.lophoc === newGrade.lophoc;
     });
-    //console.log(node);
     setNewData(node);
-    console.log(lockclasss);
     const node2 = lockclasss.filter((db) => {
       return db.week === newGrade.week && db.lophoc === newGrade.lophoc;
     });
-    //console.log(node2);
     if (node2.length > 0) setLockLop(node2[0].selected);
-  }, [newGrade.lophoc, dashboards]);
+  }, [newGrade, dashboards]);
 
   useEffect(() => {
     const tmp = classs.filter((lop) => {
@@ -90,10 +89,14 @@ const Dashboard = () => {
     });
     if (tmp) setNewClass(tmp);
   }, [newGrade.khoi]);
-  const { week, khoi, lophoc } = newGrade;
+
   const onChangeForm = (event) => {
     setNewGrade({ ...newGrade, [event.target.name]: event.target.value });
   };
+  let { week, khoi, lophoc } = newGrade;
+  useEffect(() => {
+    addThamso(newGrade);
+  }, [newGrade]);
   body = (
     <>
       <Row className="row-cols-1 row-cols-md-3 g-4 mx-auto mt-3">
@@ -171,9 +174,7 @@ const Dashboard = () => {
         </Form>
       </Row>
       {body}
-      {week && khoi && lophoc && (
-        <AddDashboardModal week={week} khoi={khoi} lophoc={lophoc} />
-      )}
+      {week && khoi && lophoc && <AddDashboardModal />}
       <Toast
         show={show}
         style={{ position: "fixed", top: "20%", right: "10px" }}
