@@ -21,7 +21,7 @@ const AddDashboardModal = () => {
   });
   useEffect(() => {
     setNewGrade({ khoi: khoi, lophoc: lophoc, week: week });
-  }, [lophoc, khoi, week]);
+  }, [lophoc, khoi, week,showAddDashboardModal]);
   const rows = [];
   for (var i = 1; i < 250; i++) {
     rows.push(i);
