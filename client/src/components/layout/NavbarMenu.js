@@ -65,21 +65,29 @@ const NavbarMenu = () => {
             </>
           )}
           {(role === "admin" || role === "superadmin") && (
-            <Nav.Link
-              className="font-weight-bolder text-white"
-              to="/lockclass"
-              as={Link}
-            >
-              Khóa sổ đầu bài
-            </Nav.Link>
+            <>
+              <Nav.Link
+                className="font-weight-bolder text-white"
+                to="/lockclass"
+                as={Link}
+              >
+                Khóa sổ đầu bài
+              </Nav.Link>
+            </>
           )}
-
+          <Nav.Link
+            className="font-weight-bolder text-white"
+            to="/viewrecoder"
+            as={Link}
+          >
+            Danh sách sổ đầu bài
+          </Nav.Link>
           <Nav.Link
             className="font-weight-bolder text-white"
             to="/dashboard"
             as={Link}
           >
-            Sổ đầu bài
+            Cập nhật Sổ đầu bài
           </Nav.Link>
           <Nav.Link
             className="font-weight-bolder text-white"

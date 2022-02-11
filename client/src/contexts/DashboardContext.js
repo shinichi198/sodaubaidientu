@@ -36,6 +36,7 @@ const DashboardContextProvider = ({ children }) => {
     try {
       const res = await axios.get(`${apiUrl}/dashboards/${id}`);
       if (res.data.success) {
+        // console.log("mmmm", res.data.recoder);
         dispatch({
           type: DASHBOARD_LOADED_SUCCESS,
           payload: res.data.recoder,
@@ -45,7 +46,20 @@ const DashboardContextProvider = ({ children }) => {
       dispatch({ type: DASHBOARD_LOADED_FAIL });
     }
   };
-
+  const getAllDashboards = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/viewtoprecoder/`);
+      if (res.data.success) {
+        //console.log("mmmm", res.data.recoder);
+        dispatch({
+          type: DASHBOARD_LOADED_SUCCESS,
+          payload: res.data.recoder,
+        });
+      }
+    } catch (err) {
+      dispatch({ type: DASHBOARD_LOADED_FAIL });
+    }
+  };
   const addToprecoder = async (newRecoder) => {
     try {
       const res = await axios.post(`${apiUrl}/dashboards`, newRecoder);
@@ -86,6 +100,7 @@ const DashboardContextProvider = ({ children }) => {
     getDashboards,
     deleteDashboard,
     addThamso,
+    getAllDashboards,
   };
   return (
     <DashboardContext.Provider value={dashboardContextData}>

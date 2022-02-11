@@ -30,7 +30,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM5N
 ###
 
 GET http://localhost:5000/api/years
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMDA4MTF9.LE04Uj6Uj6f_AOGQD7SBw5G7lr0FocJuwzdPgqhDkuY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTNiOTJjYjQzNjc2MDM0YjJjZDE3YjQiLCJpYXQiOjE2NDQ0MjYzODl9.oZX-eman3h9ZzfqLRiuZUFxDRi6pzBrUzvKF_9gE4NU
 
 ###
 
@@ -61,7 +61,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2Y
 ###
 
 GET http://localhost:5000/api/grades
-Authorization: :Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTM2YzJhODNiOTk4NzQxOTBmNGNmZTAiLCJpYXQiOjE2MzEwMjE0NjJ9.6SFjiryxiKsgU8iSGSp1YY3ZCFO5iZmrCiKBeI0GcKE
+Authorization: :Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTNiOTJjYjQzNjc2MDM0YjJjZDE3YjQiLCJpYXQiOjE2NDQ0MjYwNDJ9.U6v9keeniYp4ULoYfDy1J19I1L5qXN_9GOHfNKl-3mE
 
 ###
 
@@ -114,3 +114,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTNiO
 {
     "selected":"true"
 }
+
+###
+
+
+GET   http://localhost:5000/api/dashboards/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTNiOTJjYjQzNjc2MDM0YjJjZDE3YjQiLCJpYXQiOjE2NDQ1MDA2NjF9.cWj4z6jJwOJoAsJKwH40opl-CW5vF8PBE-tHJRj7YEM

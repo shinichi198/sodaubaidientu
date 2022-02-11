@@ -41,6 +41,7 @@ const Dashboard = () => {
   const {
     dashboardState: { dashboards },
     getDashboards,
+    getAllDashboards,
     setShowAddDashboardModal,
     setShowToast,
     addThamso,
@@ -60,7 +61,7 @@ const Dashboard = () => {
     getAllLockClass();
   }, []);
   useEffect(() => {
-    getDashboards(_id);
+    getDashboards();
   }, []);
   let body = null;
   const [lockLop, setLockLop] = useState(false);

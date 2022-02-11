@@ -18,6 +18,7 @@ import DashboardContextProvider from "./contexts/DashboardContext";
 import LockclassContextProvider from "./contexts/LockclassContext";
 import Lockclass from "./views/Lockclass";
 import Addlockclass from "./views/Addlockclass";
+import ViewRecoder from "./views/ViewRecoder";
 function App() {
   return (
     <AuthContextProvider>
@@ -62,6 +63,11 @@ function App() {
                           exact
                           path="/lockclass"
                           component={Lockclass}
+                        />
+                        <ProtectedRoute
+                          exact
+                          path="/viewrecoder"
+                          component={ViewRecoder}
                         />
                         <ProtectedRoute
                           exact
