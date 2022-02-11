@@ -9,6 +9,7 @@ const weekRouter = require("./routes/week");
 const subjectRouter = require("./routes/subject");
 const dashboardRouter = require("./routes/dashboard");
 const lockclassRouter = require("./routes/lockclass");
+const viewtoprecoderRouter = require("./routes/viewtoprecoder");
 const cors = require("cors");
 //const URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.8mnom.mongodb.net/blogdev?retryWrites=true&w=majority`;
 const URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0-shard-00-00.8mnom.mongodb.net:27017,cluster0-shard-00-01.8mnom.mongodb.net:27017,cluster0-shard-00-02.8mnom.mongodb.net:27017/blogdev?ssl=true&replicaSet=atlas-tfztw1-shard-0&authSource=admin&retryWrites=true&w=majority`;
@@ -38,6 +39,7 @@ app.use("/api/grades", gradeRouter);
 app.use("/api/weeks", weekRouter);
 app.use("/api/subjects", subjectRouter);
 app.use("/api/dashboards", dashboardRouter);
+app.use("/api/viewtoprecoder", viewtoprecoderRouter);
 app.use("/api/lockclass", lockclassRouter);
 const PORT = process.env.PORT || 5000;
 
