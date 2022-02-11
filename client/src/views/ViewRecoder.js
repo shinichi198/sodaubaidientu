@@ -30,7 +30,7 @@ const ViewRecoder = () => {
     lophoc: "",
   });
   useEffect(() => {
-    getAllDashboards(newGrade.week);
+    getAllDashboards();
   }, []);
 
   const [newData, setNewData] = useState(null);
