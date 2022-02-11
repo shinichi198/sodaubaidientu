@@ -83,7 +83,7 @@ const ViewRecoder = () => {
             newData.map((lop) => (
               <>
                 <tr>
-                  <th scope="row">
+                  <th scope="row" key={lop.id}>
                     {lop.thu} <br /> {lop.ngay}
                   </th>
                   <td>{tenca(lop.cahoc)}</td>
